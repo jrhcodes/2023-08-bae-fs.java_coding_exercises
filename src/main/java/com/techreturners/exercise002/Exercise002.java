@@ -1,7 +1,5 @@
 package com.techreturners.exercise002;
 
-import java.util.List;
-
 public class Exercise002 {
 
     public boolean isFromManchester( Person person ) {

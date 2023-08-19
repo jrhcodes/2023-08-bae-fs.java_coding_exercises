@@ -1,13 +1,26 @@
 package com.techreturners.exercise003;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public class Exercise003 {
 
-    int getIceCreamCode(String iceCreamFlavour) {
-        throw new UnsupportedOperationException(("You can delete this statement and add your code here."));
+    static final IceCreamFlavour [] flavourLookupTable = new IceCreamFlavour[]{
+            new IceCreamFlavour("Pistachio", 11),
+            new IceCreamFlavour("Raspberry Ripple", 1),
+            new IceCreamFlavour("Vanilla", 43),
+            new IceCreamFlavour("Mint Chocolate Chip", 3),
+            new IceCreamFlavour("Chocolate", 423),
+            new IceCreamFlavour("Mango Sorbet", 5)
+    };
+
+    int getIceCreamCode(String name) {
+        Optional<IceCreamFlavour> foundFlavour = Arrays.stream(flavourLookupTable).filter(flavour -> flavour.getName().equals(name)).findFirst();
+        return foundFlavour.map(IceCreamFlavour::getCode).orElse(-1);
     }
 
     String[] iceCreamFlavours() {
-        throw new UnsupportedOperationException(("You can delete this statement and add your code here."));
+        return Arrays.stream(flavourLookupTable).map(IceCreamFlavour::getName).toArray(String[]::new);
     }
 
 }
