@@ -1,9 +1,14 @@
 package com.techreturners.exercise005;
 
+import java.util.*;
+
 public class Exercise005 {
 
     public boolean isPangram(String input) {
-        throw new UnsupportedOperationException("You can delete this statement and add your code here.");
-    }
 
+        final String lowerCaseInput = input.toLowerCase();
+        final String[] alphabet = "abcdefghijklmnopqrstuvwvxyz".split("");
+
+        return Arrays.stream(alphabet).allMatch(lowerCaseInput::contains);
+    }
 }
