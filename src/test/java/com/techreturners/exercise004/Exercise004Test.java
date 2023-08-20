@@ -7,6 +7,7 @@ import java.time.Month;
 import java.time.temporal.TemporalField;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Exercise004Test {
 
@@ -52,6 +53,18 @@ public class Exercise004Test {
         LocalDateTime expected = LocalDateTime.of(2053, Month.SEPTEMBER, 9, 1, 46, 39, 0);
 
         assertEquals(expected, ex004.getDateTime());
+    }
+
+    @Test
+    public void checkConstructorNullLocalDateException() {
+        LocalDate nullDate = null;
+        assertEquals(assertThrows(IllegalArgumentException.class, () -> new Exercise004(nullDate)).getMessage(), "Null LocalDate argument passed");
+    }
+
+    @Test
+    public void checkConstructorNullLocalDateTimeException() {
+        LocalDateTime nullDateTime = null;
+        assertEquals(assertThrows(IllegalArgumentException.class, () -> new Exercise004(nullDateTime)).getMessage(), "Null LocalDateTime argument passed");
     }
 
 

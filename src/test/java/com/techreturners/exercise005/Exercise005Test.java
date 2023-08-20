@@ -1,13 +1,13 @@
 package com.techreturners.exercise005;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Exercise005Test {
 
@@ -79,9 +79,9 @@ public class Exercise005Test {
                 "abcdefghijklmnopqrstuvwxy"
         };
 
-        for (String ch : testInput) {
-            assertFalse(ex005.isPangram(ch.toLowerCase())); // looped rather than stream so error point can be detected with debug
-            assertFalse(ex005.isPangram(ch.toUpperCase())); // tried to use
+        for (String testValue : testInput) {
+            assertFalse(ex005.isPangram(testValue.toLowerCase()), testValue.toLowerCase() + " is not a pangram but ex005::isPangram returned true");
+            assertFalse(ex005.isPangram(testValue.toUpperCase()), testValue.toUpperCase() + " is not a pangram but ex005::isPangram returned true");
         }
 
     }
@@ -95,6 +95,11 @@ public class Exercise005Test {
     @Test
     public void checkSentenceWithNumbersIsAPangram() {
         assertTrue(ex005.isPangram("the 1 quick brown fox jumps over the 2 lazy dogs"));
+    }
+
+    @Test
+    public void checkNullArgException() {
+        assertEquals(assertThrows(IllegalArgumentException.class, () -> ex005.isPangram(null)).getMessage(), "Null string argument passed");
     }
 
 }

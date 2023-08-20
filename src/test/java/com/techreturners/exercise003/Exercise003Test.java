@@ -49,6 +49,12 @@ public class Exercise003Test {
         assertArrayEquals(expected, ex003.iceCreamFlavours());
     }
 
+    @Test
+    public void checkUnknownFlavour() {
+        String iceCreamFlavour = "Really Smelly";
+        int expected = -1;
 
+        assertEquals(expected, ex003.getIceCreamCode(iceCreamFlavour));
+    }
 
 }

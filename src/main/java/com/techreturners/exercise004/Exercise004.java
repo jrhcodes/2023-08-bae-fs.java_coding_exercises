@@ -9,10 +9,18 @@ public class Exercise004 {
     private final LocalDateTime dateTime;
 
     public Exercise004(LocalDate date) {
+
+        if(date == null)
+            throw new IllegalArgumentException("Null LocalDate argument passed");
+
         dateTime = calcFutureTime(date.atStartOfDay());
     }
 
     public Exercise004(LocalDateTime initDateTime) {
+
+        if(initDateTime == null)
+            throw new IllegalArgumentException("Null LocalDateTime argument passed");
+
         dateTime = calcFutureTime(initDateTime);
     }
 
