@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Exercise001 {
     public String capitalizeWord(String word) {
-        return (word.length() == 0) ? ""
+        return (word.isEmpty()) ? ""
                 : Character.toUpperCase(word.charAt(0)) + (word.length() > 1 ? word.substring(1) : "");
 }
 

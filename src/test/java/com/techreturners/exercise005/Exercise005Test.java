@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -43,19 +45,46 @@ public class Exercise005Test {
     public void checkSentenceWithMixedUpperAndLowerCaseIsAPangram() {
         assertTrue(ex005.isPangram("The Five boXing wiZards Jump QuicklY"));
     }
-
-
     @Test
-    public void checkSentenceWithMissingLetterXIsNotAPangram() {
-        assertFalse(ex005.isPangram("the quick brown fo jumps over the lazy dog"));
+    public void checkSentenceWithMissingLetterIsNotPangramAToZ() {
+
+        // tried to use @ValueSource and @ParameterizedTest, but I think my version of Java is too old :/
+        // so used a loop/array instead
+        final String [] testInput = { // each row is missing on letter
+                "bcdefghijklmnopqrstuvwxyz",
+                "acdefghijklmnopqrstuvwxyz",
+                "abdefghijklmnopqrstuvwxyz",
+                "abcefghijklmnopqrstuvwxyz",
+                "abcdfghijklmnopqrstuvwxyz",
+                "abcdeghijklmnopqrstuvwxyz",
+                "abcdefhijklmnopqrstuvwxyz",
+                "abcdefgijklmnopqrstuvwxyz",
+                "abcdefghjklmnopqrstuvwxyz",
+                "abcdefghiklmnopqrstuvwxyz",
+                "abcdefghijlmnopqrstuvwxyz",
+                "abcdefghijkmnopqrstuvwxyz",
+                "abcdefghijklnopqrstuvwxyz",
+                "abcdefghijklmopqrstuvwxyz",
+                "abcdefghijklmnpqrstuvwxyz",
+                "abcdefghijklmnoqrstuvwxyz",
+                "abcdefghijklmnoprstuvwxyz",
+                "abcdefghijklmnopqstuvwxyz",
+                "abcdefghijklmnopqrtuvwxyz",
+                "abcdefghijklmnopqrsuvwxyz",
+                "abcdefghijklmnopqrstvwxyz",
+                "abcdefghijklmnopqrstuwxyz",
+                "abcdefghijklmnopqrstuvxyz",
+                "abcdefghijklmnopqrstuvwyz",
+                "abcdefghijklmnopqrstuvwxz",
+                "abcdefghijklmnopqrstuvwxy"
+        };
+
+        for (String ch : testInput) {
+            assertFalse(ex005.isPangram(ch.toLowerCase())); // looped rather than stream so error point can be detected with debug
+            assertFalse(ex005.isPangram(ch.toUpperCase())); // tried to use
+        }
+
     }
-
-
-    @Test
-    public void checkSentenceWithMissingLetterHIsNotAPangram() {
-        assertFalse(ex005.isPangram("five boxing wizards jump quickly at it"));
-    }
-
 
     @Test
     public void checkSentenceWithUnderscoresIsAPangram() {

@@ -16,7 +16,10 @@ public class Exercise003 {
 
     int getIceCreamCode(String name) {
         Optional<IceCreamFlavour> foundFlavour = Arrays.stream(flavourLookupTable).filter(flavour -> flavour.getName().equals(name)).findFirst();
-        return foundFlavour.map(IceCreamFlavour::getCode).orElse(-1);
+        if(foundFlavour.isPresent())
+            return foundFlavour.map(IceCreamFlavour::getCode).orElse(-1);
+        else
+            throw new IllegalArgumentException("Unknown Flavour");
     }
 
     String[] iceCreamFlavours() {
