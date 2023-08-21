@@ -83,11 +83,9 @@ public class Exercise005Test {
     }
 
     @Test
-    public void checkSentenceWithUnderscoresIsAPangram() {
+    public void checkSentenceLastCharacterAsNonAlpha() {
         assertTrue(ex005.isPangram("the_quick_brown_fox_jumps_over_the_lazy_dog"));
     }
-
-
     @Test
     public void checkSentenceWithNumbersIsAPangram() {
         assertTrue(ex005.isPangram("the 1 quick brown fox jumps over the 2 lazy dogs"));
